@@ -1,3 +1,5 @@
+import json
+
 import requests
 import logging
 
@@ -12,9 +14,10 @@ class API:
     def _send_request(self, url, method='GET', **kwargs):
         try:
             url = f'{self.base_url}/{url}'
-            requests.request(url=url, method=method, **kwargs)
+            r= requests.request(url=url, method=method, **kwargs)
+            r.json()
         except Exception as e:
             logging.error(f'Request to {url} failed with {e}')
 
     def post_new_books(self, data):
-        self._send_request(url=API.POST_BOOKS_URL, method='POST', data=data)
+        self._send_request(url=API.POST_BOOKS_URL, method='POST', json=data)

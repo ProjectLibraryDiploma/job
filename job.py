@@ -8,7 +8,7 @@ if __name__ == "__main__":
         level=logging.INFO, format="%(asctime)s - %(levelname)s: %(message)s"
     )
 
-    test_api = API('https://127.0.0.1')
+    test_api = API('http://127.0.0.1:8000')
     books = Books('books/books.csv')
 
     test_api.post_new_books(books.by_category)
